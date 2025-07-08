@@ -13,6 +13,34 @@ This project is an AI/ML pipeline that detects nails from an image, estimates th
 ![Output Image](./output_result.jpg)
 
 ---
+## 📤 Output Summary
+
+The model successfully detected and analyzed the nails in the test image.
+
+**Total Nails Detected:** `16`
+
+| Nail ID | Height (mm) | Weight (g) | Group |
+|---------|--------------|-------------|--------|
+| 0       | 44.35        | 1.84        | 1      |
+| 1       | 51.74        | 2.43        | 5      |
+| 2       | 43.30        | 1.76        | 1      |
+| 3       | 31.94        | 1.02        | 4      |
+| 4       | 32.74        | 1.07        | 4      |
+| 5       | 24.29        | 0.62        | 2      |
+| 6       | 14.26        | 0.24        | 0      |
+| 7       | 46.20        | 1.98        | 1      |
+| 8       | 50.16        | 2.30        | 5      |
+| 9       | 9.50         | 0.12        | 3      |
+| 10      | 7.13         | 0.07        | 3      |
+| 11      | 25.34        | 0.67        | 2      |
+| 12      | 28.78        | 0.85        | 6      |
+| 13      | 12.41        | 0.19        | 0      |
+| 14      | 20.33        | 0.45        | 7      |
+| 15      | 8.45         | 0.09        | 3      |
+
+Grouped nails represent similar nails (in height ± tolerance and weight ± tolerance).
+
+---
 
 ## 🧠 Approach
 
