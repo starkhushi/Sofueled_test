@@ -1,0 +1,72 @@
+# Nail Detection and Analysis 🔩
+
+This project is an AI/ML pipeline that detects nails from an image, estimates their physical properties, and groups similar nails together using unsupervised learning.
+
+## 📸 Input vs Output
+
+### ➡️ Original Test Image
+
+![Test Image](./test_image.jpg)
+
+### ✅ Output with Detections
+
+![Output Image](./output_result.jpg)
+
+---
+
+## 🧠 Approach
+
+### 🧰 1. Dataset and Annotation
+
+- A few images of nails (around 8–10) were collected for training.
+- Each image was annotated using [LabelImg](https://github.com/tzutalin/labelImg) tool.
+- The annotations were saved in **YOLO format**, which includes:
+ ```bash
+class_id x_center y_center width height
+ ```
+
+ - These `.txt` label files were saved alongside their corresponding image files.
+
+---
+
+### 🧠 2. Model Training (YOLOv5)
+
+- The YOLOv5 architecture was used to train a nail detector on the labeled data.
+- The best model weights (`best.pt`) were saved after training.
+- Detection on new images was performed using the trained YOLO model.
+
+---
+
+### 📐 3. Estimating Height and Weight
+
+- For each detected nail, the bounding box height (in pixels) was converted to millimeters using a **pixel-to-mm scale** (manually assumed or estimated).
+- Height estimation formula:
+ ```bash
+height_mm = pixel_height * pixel_to_mm_ratio
+ ```
+ - Weight was estimated using a formula:
+ ```bash
+weight = 0.002 * (height_mm ^ 1.8)
+ ```
+This assumes a rough proportional relationship based on nail dimensions and density.
+
+---
+
+### 🤝 4. Grouping Similar Nails
+
+- Nails were grouped into similar pairs using **K-Means clustering** based on `[height_mm, weight_g]`.
+- Each group was assigned a distinct color in the output image.
+
+---
+
+### ✅ 5. Output
+
+- The script overlays:
+- Bounding boxes
+- Height & weight estimates
+- Group IDs
+- It also saves the output as an annotated image.
+
+---
+
+## Made by Khushi
